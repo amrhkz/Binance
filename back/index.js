@@ -24,6 +24,8 @@ mongoose
   })
   .catch((err) => console.error("MongoDB Error:", err));
 
+app.use("/auth", require("./routes/auth"));
+
 app.listen(process.env.BACK_PORT, () =>
   console.log(`Server running on http://localhost:${process.env.BACK_PORT}`)
 );
