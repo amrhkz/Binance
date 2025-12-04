@@ -1,0 +1,83 @@
+.px-xl {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.pt-xl {
+  padding-top: 24px;
+}
+.text-t-primary {
+  color: var(--color-textPrimary);
+}
+.bn-textField.data-size-large {
+  height: 48px;
+}
+.mr-2xs {
+  margin-right: 8px;
+}
+.mb-xl {
+  margin-bottom: 24px;
+}
+.bids-button-group {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+.text-body2 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.text-t-third {
+  color: var(--color-textThird);
+}
+.gap-m {
+  gap: 16px;
+}
+.bids-button-group.dark {
+  --color-btn: #2b3139;
+}
+.bids-button-group.mini .third-part-btn {
+  border-color: var(--color-btn);
+}
+.border-Line {
+  border-color: var(--color-Line);
+}
+.p-m {
+  padding: 16px;
+}
+.text-captionSub {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+.p-2xs {
+  padding: 8px;
+}
+.my-m {
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.bn-button.data-size-small {
+  border-radius: var(--radii-s);
+  height: 32px;
+  min-height: 32px;
+  min-width: 52px;
+  padding-left: var(--space-s);
+  padding-right: var(--space-s);
+}
+.text-captionSub {
+  font-size: 12px;
+  line-height: 16px;
+}
+.bg-t-white {
+  background-color: var(--color-textWhite);
+}
+.ml-m {
+  margin-left: 16px;
+}
+.noH5\:bg-Vessel {
+  background-color: var(--color-Vessel);
+}

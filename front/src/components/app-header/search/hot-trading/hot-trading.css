@@ -1,0 +1,128 @@
+.explore-hot-trading {
+  margin-bottom: 24px;
+}
+.section-swiper {
+  flex-direction: column;
+}
+.bn-flex {
+  display: flex;
+}
+.section-swiper .section-swiper-title-container {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 0px 16px;
+}
+.section-swiper-title-container--title {
+  font-size: 14px;
+  color: var(--color-PrimaryText);
+}
+.explore-section-swiper-dots {
+  gap: 8px;
+}
+.explore-section-swiper-dots--arrow {
+  color: var(--color-textDisabled);
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+}
+.header-rightside .bn-svg {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.bn-swiper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.bn-swiper-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transform: translate(0px, 0px) translateZ(0px);
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+.bn-swiper-item {
+  flex: none;
+  width: 100%;
+  height: 100%;
+  animation: moving 0.5s ease;
+}
+@keyframes moving {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+.explore-hot-trading-cols {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.explore-hot-trading--item {
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 16px;
+}
+.explore-hot-trading--item:hover {
+  background-color: var(--color-Input);
+}
+.explore-hot-trading--item-left-container {
+  align-items: center;
+}
+.explore-hot-trading--item-index {
+  color: var(--color-DisabledText);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-right: 8px;
+}
+.color-t_primaryYellow {
+  color: var(--color-PrimaryYellow);
+}
+.explore-hot-trading--item-asset-icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 4px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+.explore-hot-trading--item-right-container {
+  flex-direction: column;
+  align-items: flex-end;
+}
+.explore-hot-trading--item-price {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--color-PrimaryText);
+}
+.common-widget-css_wrap .color-t_buy {
+  color: var(--color-textBuy);
+}
+.common-widget-css_wrap .color-t_sell {
+  color: var(--color-textSell);
+}
+.explore-hot-trading--item-difference {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+}

@@ -1,0 +1,8 @@
+.text-TextLink {
+  color: var(--color-TextLink);
+}
+@media only screen and (min-width: 768px) {
+  .bn-textField:hover:not(.data-error):not(.disabled):not(.static):not(:has(.bn-bubble:hover)) {
+      border-color: var(--color-PrimaryYellow);
+  }
+}

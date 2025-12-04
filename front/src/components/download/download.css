@@ -1,0 +1,55 @@
+.text-headline2 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 48px;
+}
+.gap-5xl {
+  gap: 40px;
+}
+.p-l {
+  padding: 20px;
+}
+.bg-white {
+  background-color: #fff;
+}
+.p-xs {
+  padding: 10px;
+}
+.ml-xl {
+  margin-left: 24px;
+}
+.text-t-third {
+  color: var(--color-textThird);
+}
+.text-body1 {
+  font-size: 16px;
+  line-height: 24px;
+}
+.text-headline6 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+}
+.mt-2xs {
+  margin-top: 8px;
+}
+.p-2xs {
+  padding: 8px !important;
+}
+.bn-svg {
+  font-size: inherit;
+  height: 1em;
+  width: 1em;
+}
+.text-\[40px\] {
+  font-size: 40px !important;
+}
+.text-\[20px\] {
+  font-size: 20px !important;
+}
+.text-iconNormal {
+  color: var(--color-iconNormal) !important;
+}
+.ml-4xs {
+  margin-left: 4px !important;
+}

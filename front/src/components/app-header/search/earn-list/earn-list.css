@@ -1,0 +1,61 @@
+.explore-earn-list {
+  padding: 0 16px;
+}
+.section-swiper {
+  flex-direction: column;
+}
+.bn-flex {
+  display: flex;
+}
+.explore-earn-list-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.explore-earn-list-item {
+  border: 1px solid var(--color-Line);
+  border-radius: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.explore-earn-list-item__content {
+  display: flex;
+  flex-direction: column;
+}
+.explore-earn-list-item__asset {
+  margin-bottom: 8px;
+  flex-direction: column;
+}
+.explore-earn-list-item__asset-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.explore-earn-list-item__apr-label {
+  margin-right: 4px;
+  color: var(--color-TertiaryText);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+.explore-earn-list-item__apr-value {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+.color-t_buy {
+  color: var(--color-textBuy);
+}
+.color-t_sell {
+  color: var(--color-textSell);
+}
+@media only screen and (min-width: 768px) {
+  .t-subtitle1,
+  .typography-subtitle1 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+}

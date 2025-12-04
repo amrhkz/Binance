@@ -1,0 +1,54 @@
+@media (min-width: 767px) {
+  .noH5\:py-l {
+    padding-bottom: 20px !important;
+  }
+}
+@media (min-width: 767px) {
+  .noH5\:py-l {
+    padding-top: 20px !important;
+  }
+}
+@media (min-width: 767px) {
+  .noH5\:px-xl {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+@media (min-width: 767px) {
+  .noH5\:rounded-\[20px\] {
+    border-radius: 20px !important;
+  }
+}
+@media (min-width: 767px) {
+  .noH5\:block {
+    display: block !important;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .typography-subtitle6 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 24px !important;
+  }
+}
+.gap-m {
+  gap: 16px !important;
+}
+.gap-4xs {
+  gap: 4px !important;
+}
+@media only screen and (min-width: 768px) {
+  .typography-subtitle3 {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 18px !important;
+  }
+}
+.text-TextBuy {
+  color: var(--color-TextBuy) !important;
+}
+.text-headline6 {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  line-height: 28px !important;
+}

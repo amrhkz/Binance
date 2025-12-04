@@ -1,0 +1,44 @@
+@media (min-width: 1023px) {
+  .desktop\:py-\[20px\] {
+    padding-bottom: 20px ;
+    padding-top: 20px ;
+  }
+}
+@media (min-width: 767px) {
+  .noH5\:bg-Vessel {
+    background-color: var(--color-Vessel) ;
+  }
+}
+.p-xl {
+  padding: 24px ;
+}
+@media (min-width: 767px) {
+  .noH5\:justify-between {
+    justify-content: space-between ;
+  }
+}
+.mb-m {
+  margin-bottom: 16px ;
+}
+@media only screen and (min-width: 768px) {
+  .t-subtitle6 {
+    font-size: 16px ;
+    font-weight: 600 ;
+    line-height: 24px ;
+    color: #eaecef;
+  }
+}
+.gap-m {
+  grid-gap: 16px ;
+  gap: 16px ;
+}
+.text-t-primary {
+  color: var(--color-textPrimary);
+}
+.font-normal {
+  font-weight: 400 ;
+}
+.text-subtitle1 {
+  font-size: 16px ;
+  line-height: 24px ;
+}
