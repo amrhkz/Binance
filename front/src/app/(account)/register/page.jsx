@@ -1,99 +1,217 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import "./register.css";
 import Link from "next/link";
 
 function page() {
+  const [step, setStep] = useState("email");
+  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
+  const [timer, setTimer] = useState(60);
+
+  const handleContinue = async (e) => {
+    e.preventDefault();
+    if (step === "email" && email) {
+      try {
+        const res = await fetch("http://localhost:5000/auth/send-code", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+          credentials: "include",
+        });
+        const data = await res.json();
+        if (data.success) {
+          setStep("code");
+          alert("Success");
+          setTimer(30);
+        } else {
+          alert("Error");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    } else if (step === "code" && code) {
+      try {
+        const res = await fetch("http://localhost:5000/auth/verify-code", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, code }),
+          credentials: "include",
+        });
+        const data = await res.json();
+        if (res.ok) {
+          // onLogin?.(data);
+          alert("Logged in successfully");
+        } else {
+          alert(data);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
+  useEffect(() => {
+    let interval;
+    if (step === "code" && timer > 0) {
+      interval = setInterval(() => setTimer((prev) => prev - 1), 1000);
+    }
+    return () => clearInterval(interval);
+  }, [step, timer]);
+
+  const handleResend = async () => {
+    await fetch("http://localhost:5000/auth/send-code", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+      credentials: "include",
+    });
+    setTimer(60);
+  };
+
   return (
     <>
       <div className="top">
         <div className="content-layout">
-          <div
-            className="content-card "
-          >
+          <div className="content-card ">
             <Link href={"/"} className="icon-wrap">
               <img className="default-icon block" src="/img/logo-3.png" />
             </Link>
-            <div className="title">Welcome to Binance</div>
+            {step === "email" && (
+              <>
+                <div className="title">Welcome to Binance</div>
+                <form onSubmit={handleContinue}>
+                  <div className="form-item">
+                    <div className="form-item-label">Email/Phone number</div>
+                    <div className="form-item-input">
+                      <input
+                        placeholder="Email/Phone (without country code)"
+                        type="text"
+                        name="email"
+                        autoCapitalize="off"
+                        data-e2e="input-username"
+                        spellCheck="false"
+                        autoComplete="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-item">
+                    <div
+                      name="agreement"
+                      className="agreement-checkbox checked"
+                    >
+                      <div className="checkbox-icon">
+                        <svg
+                          fill="BasicBg"
+                          viewBox="0 0 24 25"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="checkbox-icon-svg"
+                        >
+                          <path
+                            d="M19.357 4.687L9.301 14.743l-4.656-4.657-3.03 3.031L9.3 20.804 22.388 7.717l-3.03-3.03z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div className="typography-body3">
+                        By creating an account, I agree to Binance's{" "}
+                        <button
+                          href="https://www.binance.com/terms"
+                          target="_blank"
+                          data-e2e="lnk-terms-of-service"
+                        >
+                          Terms of Service
+                        </button>{" "}
+                        and{" "}
+                        <button
+                          href="https://www.binance.com/privacy"
+                          target="_blank"
+                          id="RegisterForm-a-termsOfUse2"
+                        >
+                          Privacy Policy
+                        </button>
+                        .
+                      </div>
+                    </div>
+                  </div>
+                  <button className="primary-button cursor-pointer">
+                    Next
+                  </button>
+                </form>
+                <div className="other-login">
+                  <div className="seperator">
+                    <div className="sep-line"></div>
+                    <div className="sep-text">or</div>
+                    <div className="sep-line"></div>
+                  </div>
+                  <div className="social-login">
+                    <div className="social-btn">
+                      <button>
+                        <img src="/img/logogoogle.png" />
+                        <div className="btn-text">Continue with Google</div>
+                      </button>
+                    </div>
+                    <div className="social-btn">
+                      <button>
+                        <img src="/img/ios.png" />
+                        <div className="btn-text">Continue with Apple</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
 
-            <form action="#" method="post">
-              <div className="form-item">
-                <div className="form-item-label">Email/Phone number</div>
-                <div className="form-item-input">
-                  <input
-                    placeholder="Email/Phone (without country code)"
-                    type="text"
-                    name="username"
-                    autoCapitalize="off"
-                    data-e2e="input-username"
-                    spellCheck="false"
-                    autoComplete="username"
-                  />
-                </div>
-              </div>
-              <div className="form-item">
-                <div name="agreement" className="agreement-checkbox checked">
-                  <div className="checkbox-icon">
-                    <svg
-                      fill="BasicBg"
-                      viewBox="0 0 24 25"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="checkbox-icon-svg"
-                    >
-                      <path
-                        d="M19.357 4.687L9.301 14.743l-4.656-4.657-3.03 3.031L9.3 20.804 22.388 7.717l-3.03-3.03z"
-                        fill="currentColor"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div className="typography-body3">
-                    By creating an account, I agree to Binance's{" "}
-                    <button
-                      href="https://www.binance.com/terms"
-                      target="_blank"
-                      data-e2e="lnk-terms-of-service"
-                    >
-                      Terms of Service
-                    </button>{" "}
-                    and{" "}
-                    <button
-                      href="https://www.binance.com/privacy"
-                      target="_blank"
-                      id="RegisterForm-a-termsOfUse2"
-                    >
-                      Privacy Policy
-                    </button>
-                    .
+            {step === "code" && (
+              <>
+                <div className="mb-[32px]">
+                  <div className="title">Verify your email</div>
+                  <div className="desc">
+                    A 6-digit code has been sent to amrhkz@outlook.com (the
+                    email is case insensitive). Please enter it within the next
+                    30 minutes.
                   </div>
                 </div>
-              </div>
-              <button className="primary-button">Next</button>
-            </form>
-            <div className="other-login">
-              <div className="seperator">
-                <div className="sep-line"></div>
-                <div className="sep-text">or</div>
-                <div className="sep-line"></div>
-              </div>
-              <div className="social-login">
-                <div className="social-btn">
-                  <button>
-                    <img src="/img/logogoogle.png" />
-                    <div className="btn-text">Continue with Google</div>
+                <form onSubmit={handleContinue}>
+                  <div className="form-item">
+                    <div className="form-item-label">Verification Code</div>
+                    <div className="form-item-input">
+                      <input
+                        type="text"
+                        placeholder=""
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
+                      />
+                      {timer > 0 ? (
+                        <button className="code-sent">
+                          Code Sent
+                          <i className="bx  bx-info-circle bx-xs"></i>
+                        </button>
+                      ) : (
+                        <button className="resend-btn" onClick={handleResend}>
+                          Resend Code
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                  <button className="primary-button cursor-pointer">
+                    Continue
                   </button>
-                </div>
-                <div className="social-btn">
-                  <button>
-                    <img src="/img/ios.png" />
-                    <div className="btn-text">Continue with Apple</div>
-                  </button>
-                </div>
+                  <button className="resend">Didn't recieve the code?</button>
+                </form>
+              </>
+            )}
+          </div>
+          {step === "email" && (
+            <>
+              <div className="regi-link">
+                <button>Sign up as an entity</button> or
+                <Link href={"/login"}>Log in</Link>
               </div>
-            </div>
-          </div>
-          <div className="regi-link">
-            <button>Sign up as an entity</button> or
-            <Link href={"/login"}>Log in</Link>
-          </div>
+            </>
+          )}
         </div>
       </div>
       {/* <div className="bottom">

@@ -20,7 +20,13 @@ exports.sendCode = async (req, res) => {
   });
 
   try {
-    const templatePath = path.join(__dirname, "..", "templates", "email", "verification.html");
+    const templatePath = path.join(
+      __dirname,
+      "..",
+      "templates",
+      "email",
+      "verification.html"
+    );
     let emailTemplate = fs.readFileSync(templatePath, "utf-8");
 
     emailTemplate = emailTemplate
@@ -28,14 +34,19 @@ exports.sendCode = async (req, res) => {
       .replace("{{YEAR}}", new Date().getFullYear());
 
     await transporter.sendMail({
-      from: `"MindMap" <${process.env.EMAIL_USER}>`,
+      from: `"Binance" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: "Your MindMap Verification Code",
+      subject: "【Binance】Confirm Your Registration From 57.128.51.212 - 2025-12-05 12:07:51(UTC)",
       html: emailTemplate,
       attachments: [
         {
           filename: "verification-email-logo.png",
-          path: path.join(__dirname, "..", "img", "verification-email-logo.png"),
+          path: path.join(
+            __dirname,
+            "..",
+            "img",
+            "verification-email-logo.png"
+          ),
           cid: "logo@mindmap",
         },
       ],
@@ -43,31 +54,48 @@ exports.sendCode = async (req, res) => {
 
     res.json({ success: true });
   } catch (err) {
+    console.error("EMAIL ERROR:", err);
     res.status(500).json("Failed to send code");
   }
 };
 
+// تایید کد
 exports.verifyCode = async (req, res) => {
   const { email, code } = req.body;
   const record = await VerificationCode.findOne({ email, code });
   if (!record) return res.status(400).json("Invalid code");
-  if (record.expiresAt < new Date()) return res.status(400).json("Code expired");
+  if (record.expiresAt < new Date())
+    return res.status(400).json("Code expired");
 
   let user = await User.findOne({ email });
   if (!user) {
-    user = await User.create({ email, name: email.split("@")[0], password: "" });
+    user = await User.create({
+      email,
+      name: email.split("@")[0],
+      password: "",
+    });
   }
 
-  jwt.sign({ email: user.email, id: user._id, name: user.name }, jwtSecret, {}, (err, token) => {
-    if (err) throw err;
-    res
-      .cookie("token", token, { httpOnly: true, sameSite: "lax", secure: false })
-      .json(user);
-  });
+  jwt.sign(
+    { email: user.email, id: user._id, name: user.name },
+    jwtSecret,
+    {},
+    (err, token) => {
+      if (err) throw err;
+      res
+        .cookie("token", token, {
+          httpOnly: true,
+          sameSite: "lax",
+          secure: false,
+        })
+        .json(user);
+    }
+  );
 
   await VerificationCode.deleteOne({ _id: record._id });
 };
 
+// پروفایل
 exports.getProfile = (req, res) => {
   const { token } = req.cookies;
   if (!token) return res.status(401).json("No token provided");
@@ -78,6 +106,7 @@ exports.getProfile = (req, res) => {
   });
 };
 
+// خروج
 exports.logout = (req, res) => {
   res.clearCookie("token").json("ok");
 };

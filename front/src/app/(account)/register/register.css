@@ -30,25 +30,30 @@
   border: 1px solid #474d57;
   background: transparent;
   display: flex;
-  flex: 1;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   border-radius: 10px;
   font-size: 16px;
   height: 48px;
   color: var(--color-PrimaryText);
+  padding: 12px;
 }
-.form-item-input input {
+.form-item-input:hover,
+.form-item-input:focus-within {
+  border: 1px solid var(--color-TextLink);
+}
+.form-item-input > input {
   font-size: 16px;
   font-weight: 500;
-  padding: 6px 10px;
   height: 50px;
   color: #eaecef;
-  width: inherit;
-  background: transparent;
   border: none;
   caret-color: var(--color-PrimaryYellow);
   outline: none;
 }
+
+
 .agreement-checkbox {
   margin-top: 1rem;
 }
@@ -316,4 +321,35 @@
 }
 .header-select-options + .header-select-options {
   margin-top: 16px;
+}
+.desc {
+  margin-top: 16px;
+  font-size: 14.5px;
+  color: var(--color-SecondaryText);
+}
+.resend {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 32px;
+  font-size: 16px;
+  margin-top: 24px;
+  color: var(--color-TextLink);
+  cursor: pointer;
+}
+.resend:hover {
+  color: var(--color-BtnBg);
+}
+.code-sent {
+  color: var(--color-DisabledText);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.form-item-input > .resend-btn {
+  color: var(--color-TextLink);
+  font-size: 13px;
+  min-width: fit-content;
+  cursor: pointer;
 }
