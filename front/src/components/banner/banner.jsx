@@ -16,7 +16,7 @@ function Banner() {
       }}
     >
       <div className="mx-auto mobile:px-m px-xl" style={{ maxWidth: "1248px" }}>
-        <div className="flex w-full flex-col px-[0px] tablet:px-xl desktop:flex-row desktop:justify-between">
+        <div className="flex w-full px-[0px] tablet:px-xl desktop:flex-row desktop:justify-between">
           <div className="flex flex-wrap pb-[0px] mobile:pb-m w-full desktop:w-1/2">
             <div className="my-auto flex h-full w-1/2 flex-1 flex-col justify-between pt-xl mobile:pt-[0] tablet:pt-[0] mobile:w-full mobile:flex-none tablet:w-full tablet:flex-none">
               <div>
